@@ -1,6 +1,6 @@
 # Information from pprof about bottlenecks:
 
-## 2-syncing:
+## 2-background syncing:
 While syncing, for cpu, almost half of time is spent in double hashing.
 ```
 (pprof) list DoubleHashH
@@ -115,3 +115,7 @@ ROUTINE ======================== github.com/lightningnetwork/lnd/vendor/github.c
 
 Even though these are the bottlenecks, the numbers seem reasonable for what
 they are doing.
+
+## 3-foreground synced:
+Since the UI layer is currently polling LND, it seems like it's spending quite
+a bit of time/cpu in server handlers, etc.
